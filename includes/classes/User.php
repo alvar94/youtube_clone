@@ -39,7 +39,7 @@ class User {
     }
 
     public function getProfilePic() {
-        return $this->sqlData["profilePic"];
+        return User::isLoggedIn() ? $this->sqlData["profilePic"] : "assets/images/profilePictures/default.png";
     }
 
     public function getSignUpDate() {

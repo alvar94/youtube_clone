@@ -23,6 +23,7 @@ if (!$video::videoExists($con, $_GET["id"])) {
 $video->incrementViews();
 ?>
 <script src="assets/js/videoPlayerActions.js"></script>
+<script src="assets/js/commentActions.js"></script>
 
 <div class="watchLeftColumn">
 
