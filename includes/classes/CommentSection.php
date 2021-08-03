@@ -10,10 +10,10 @@ class CommentSection {
     }
 
     public function create() {
-       return $this->createCommentSection();
+        return $this->createCommentSection();
     }
 
-    public function createCommentSection() {
+    private function createCommentSection() {
         $numComments = $this->video->getNumberOfComments();
         $postedBy = $this->userLoggedInObj->getUsername();
         $videoId = $this->video->getId();
@@ -21,8 +21,12 @@ class CommentSection {
         $profileButton = ButtonProvider::createUserProfileButton($this->con, $postedBy);
         $commentAction = "postComment(this, \"$postedBy\", $videoId, null, \"comments\")";
         $commentButton = ButtonProvider::createButton("COMMENT", null, $commentAction, "postComment");
-
-        // Get comments html
+        
+        $comments = $this->video->getComments();
+        $commentItems = "";
+        foreach($comments as $comment) {
+            $commentItems .= $comment->create();
+        }
 
         return "<div class='commentSection'>
 
@@ -37,7 +41,7 @@ class CommentSection {
                     </div>
 
                     <div class='comments'>
-    
+                        $commentItems
                     </div>
 
                 </div>";

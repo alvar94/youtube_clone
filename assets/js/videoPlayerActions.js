@@ -1,5 +1,5 @@
 function likeVideo(button, videoId) {
-    $.post("ajax/likeVideo.php", {videoId: videoId})
+    $.post("ajax/likeVideo.php", { videoId: videoId })
     .done(function(data) {
         
         var likeButton = $(button);
@@ -25,7 +25,7 @@ function likeVideo(button, videoId) {
 }
 
 function dislikeVideo(button, videoId) {
-    $.post("ajax/dislikeVideo.php", {videoId: videoId})
+    $.post("ajax/dislikeVideo.php", { videoId: videoId })
     .done(function(data) {
         
         var dislikeButton = $(button);
