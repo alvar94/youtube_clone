@@ -19,7 +19,8 @@ class User {
     
     public function getUsername() {
         // return $this->sqlData["username"];
-        return User::isLoggedIn() ? $this->sqlData["username"] : "";
+        /* return User::isLoggedIn() ? $this->sqlData["username"] : ""; */
+        return User::isLoggedIn() && is_array($this->sqlData) ? $this->sqlData["username"] : "";
     }
 
     public function getName() {

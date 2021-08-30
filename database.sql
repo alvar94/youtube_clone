@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-08-2021 a las 17:27:12
+-- Tiempo de generación: 30-08-2021 a las 20:03:43
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -68,15 +68,6 @@ CREATE TABLE `comments` (
   `datePosted` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `comments`
---
-
-INSERT INTO `comments` (`id`, `postedBy`, `videoId`, `responseTo`, `body`, `datePosted`) VALUES
-(160, 'dani94', 83, 0, 'stupid boy?', '2021-08-05 10:49:52'),
-(161, 'dani94', 83, 0, 'lot of gym and 0 school xD', '2021-08-05 10:52:15'),
-(162, 'dani94', 83, 161, 'yes haha', '2021-08-05 10:53:03');
-
 -- --------------------------------------------------------
 
 --
@@ -89,13 +80,6 @@ CREATE TABLE `dislikes` (
   `commentId` int(11) NOT NULL,
   `videoId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `dislikes`
---
-
-INSERT INTO `dislikes` (`id`, `username`, `commentId`, `videoId`) VALUES
-(47, 'dani94', 0, 83);
 
 -- --------------------------------------------------------
 
@@ -110,13 +94,6 @@ CREATE TABLE `likes` (
   `videoId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `likes`
---
-
-INSERT INTO `likes` (`id`, `username`, `commentId`, `videoId`) VALUES
-(133, 'dani94', 0, 84);
-
 -- --------------------------------------------------------
 
 --
@@ -128,13 +105,6 @@ CREATE TABLE `subscribers` (
   `userTo` varchar(50) NOT NULL,
   `userFrom` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `subscribers`
---
-
-INSERT INTO `subscribers` (`id`, `userTo`, `userFrom`) VALUES
-(5, 'jano57', 'dani94');
 
 -- --------------------------------------------------------
 
@@ -148,24 +118,6 @@ CREATE TABLE `thumbnails` (
   `filePath` varchar(250) NOT NULL,
   `selected` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `thumbnails`
---
-
-INSERT INTO `thumbnails` (`id`, `videoId`, `filePath`, `selected`) VALUES
-(142, 83, 'uploads/videos/thumbnails/83-610ade0d09947.jpg', 0),
-(143, 83, 'uploads/videos/thumbnails/83-610ade0d4aef4.jpg', 0),
-(144, 83, 'uploads/videos/thumbnails/83-610ade0db8a8f.jpg', 1),
-(145, 84, 'uploads/videos/thumbnails/84-610adf0625a94.jpg', 1),
-(146, 84, 'uploads/videos/thumbnails/84-610adf0655c98.jpg', 0),
-(147, 84, 'uploads/videos/thumbnails/84-610adf0687a66.jpg', 0),
-(148, 85, 'uploads/videos/thumbnails/85-610ae0994f2ba.jpg', 1),
-(149, 85, 'uploads/videos/thumbnails/85-610ae099a1651.jpg', 0),
-(150, 85, 'uploads/videos/thumbnails/85-610ae09a2dde9.jpg', 0),
-(151, 86, 'uploads/videos/thumbnails/86-610ee60fab905.jpg', 1),
-(152, 86, 'uploads/videos/thumbnails/86-610ee61140473.jpg', 0),
-(153, 86, 'uploads/videos/thumbnails/86-610ee6144f763.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -190,8 +142,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `firstName`, `lastName`, `username`, `email`, `password`, `signUpDate`, `profilePic`, `history`) VALUES
-(1, 'Dani', 'Blanch', 'dani94', 'Abcde@abcdk.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '2021-06-25 16:08:43', 'assets/images/profilePictures/default.png', NULL),
-(6, 'Josepmaria', 'Costa', 'jano57', 'jano57@obbjb.com', 'ce45b4b99341100b82cd5b5174b221b378ffe0579adb72294448e6e228c2e140eb9655f756f8e8d79699a46f9db477ae6a0816b7283b5f635606d79e5617b80f', '2021-07-08 17:45:15', 'assets/images/profilePictures/default-male.png', NULL);
+(1, 'Dani', 'Blanch', 'dani94', 'Abcde@abcdk.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '2021-06-25 16:08:43', 'assets/images/profilePictures/default.png', NULL);
 
 -- --------------------------------------------------------
 
@@ -211,16 +162,6 @@ CREATE TABLE `videos` (
   `views` int(11) NOT NULL DEFAULT 0,
   `duration` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `videos`
---
-
-INSERT INTO `videos` (`id`, `uploadedBy`, `title`, `description`, `privacy`, `filePath`, `category`, `uploadDate`, `views`, `duration`) VALUES
-(83, 'dani94', 'Funny elevator', 'Clown and girl in an elevator', 1, 'uploads/videos/610ade0212cc5.mp4', 9, '2021-08-04 20:35:46', 21, '00:28'),
-(84, 'dani94', 'Dance1', 'Girls dancing', 0, 'uploads/videos/610adf031bb84.mp4', 5, '2021-08-04 20:40:03', 14, '00:08'),
-(85, 'jano57', 'LOL', 'Laugh out loud ', 1, 'uploads/videos/610ae08d18984.mp4', 9, '2021-08-04 20:46:37', 24, '00:34'),
-(86, 'dani94', 'Funny girl', 'las chicas se derriten', 1, 'uploads/videos/610ee5d231902.mp4', 9, '2021-08-07 21:58:10', 12, '02:49');
 
 --
 -- Índices para tablas volcadas
@@ -306,13 +247,13 @@ ALTER TABLE `likes`
 -- AUTO_INCREMENT de la tabla `subscribers`
 --
 ALTER TABLE `subscribers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `thumbnails`
 --
 ALTER TABLE `thumbnails`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -324,7 +265,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
