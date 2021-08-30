@@ -2,6 +2,7 @@
 
 - Streaming video player with javascript(similar to Youtube).
 - Username: 'dani94' && password: 'password'.
+- Video power: ffmpeg.
 - Programmed with php, mysql and javascript.
 - Style with css.
 - Tested with windows machine on microsoft edge and chrome.
