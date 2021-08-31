@@ -32,7 +32,7 @@ class ButtonProvider {
                 </a>";
     }
 
-    public static function createUserProfileButton($con, $username) {
+    /* public static function createUserProfileButton($con, $username) {
         $userObj = new User($con, $username);
         $profilePic = $userObj->getProfilePic();
         $link = "profile.php?username=$username";
@@ -40,7 +40,23 @@ class ButtonProvider {
         return "<a href='$link'>
                     <img src='$profilePic' class='profilePicture'>
                 </a>";
-    }
+    } */
+    public static function createUserProfileButton($con, $username) {
+        if($username !== ""){
+         $userObj = new User($con, $username);
+         $profilePic = $userObj->getProfilePic();
+        }
+          
+        else {
+         $profilePic = "assets/images/profilePictures/default.png";
+        }
+   
+        $link = "profile.php?username=$username";
+   
+      return "<a href='$link'>
+          <img src='$profilePic' class='profilePicture'>
+          </a>";
+  }
 
     public static function createEditVideoButton($videoId) {
         $href = "editVideo.php?videoId=$videoId";

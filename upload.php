@@ -1,8 +1,11 @@
 <?php 
 require_once("includes/header.php");
 require_once("includes/classes/VideoDetailsFormProvider.php");
-?>
 
+if (!User::isLoggedIn()) {
+    header("Location: signIn.php");
+}
+?>
 
 <div class="column">
 

@@ -34,7 +34,12 @@ $video->incrementViews();
     $videoPlayer = new VideoInfoSection($con, $video, $userLoggedInObj);
     echo $videoPlayer->create();
 
-    $commentSection = new CommentSection($con, $video, $userLoggedInObj);
+    // $commentSection = new CommentSection($con, $video, $userLoggedInObj);
+    if($usernameLoggedIn === "") {
+        $commentSection = new CommentSection($con, $video, ''); 
+    } else {
+        $commentSection = new CommentSection($con, $video, $userLoggedInObj);
+    }
     echo $commentSection->create();
 ?>
 

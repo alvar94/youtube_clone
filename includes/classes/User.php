@@ -11,6 +11,8 @@ class User {
         $query->execute();
 
         $this->sqlData = $query->fetch(PDO::FETCH_ASSOC);
+
+        
     }
 
     public static function isLoggedIn() {

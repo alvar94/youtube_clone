@@ -75,8 +75,8 @@ class VideoDetailsFormProvider {
 
     private function createPrivacyInputTest() {
         return "<div class='mb-3'>
-                    <select class='form-select' name='privacyInput'>
-                        <option selected>Privacy</option>
+                    <select class='form-select' name='privacyInput' required>
+                        <option value=''>Privacy</option>
                         <option value='0'>Private</option>
                         <option value='1'>Public</option>
                     </select>
@@ -101,8 +101,8 @@ class VideoDetailsFormProvider {
         $query->execute();
 
         $html = "<div class='mb-3'>
-                    <select class='form-select' name='categoryInput'>
-                        <option selected>Categories</option>";
+                    <select class='form-select' name='categoryInput' required>
+                        <option value=''>Categories</option>";
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
             $id = $row["id"];

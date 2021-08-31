@@ -6,7 +6,7 @@ if (isset($_GET["username"])) {
     $profileUsername = $_GET["username"];
 }
 else {
-    echo "Channek not found";
+    echo "Channel not found";
     exit();
 }
 $profileGenerator = new ProfileGenerator($con, $userLoggedInObj, $profileUsername);
